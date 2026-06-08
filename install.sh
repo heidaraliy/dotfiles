@@ -20,8 +20,11 @@ install_file "$repo_dir/.zshrc" "$HOME/.zshrc"
 install_file "$repo_dir/.gitconfig" "$HOME/.gitconfig"
 install_file "$repo_dir/.tmux.conf" "$HOME/.tmux.conf"
 install_file "$repo_dir/.config/tmux/aesthetic.conf" "$HOME/.config/tmux/aesthetic.conf"
+install_file "$repo_dir/.config/tmux/tmux-pane-context" "$HOME/.config/tmux/tmux-pane-context"
 install_file "$repo_dir/.config/nvim/init.lua" "$HOME/.config/nvim/init.lua"
 install_file "$repo_dir/.config/nvim/lazy-lock.json" "$HOME/.config/nvim/lazy-lock.json"
+
+chmod +x "$HOME/.config/tmux/tmux-pane-context"
 
 printf 'Installed dotfiles.'
 if [ -d "${backup_dir:-}" ]; then

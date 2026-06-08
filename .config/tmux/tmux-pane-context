@@ -1,0 +1,35 @@
+#!/usr/bin/env sh
+set -eu
+
+target="${1:-}"
+
+if [ -n "$target" ]; then
+  pane_path=$(tmux display-message -p -t "$target" "#{pane_current_path}" 2>/dev/null || pwd)
+else
+  pane_path=$PWD
+fi
+
+repo_root=$(git -C "$pane_path" rev-parse --show-toplevel 2>/dev/null || true)
+
+if [ -n "$repo_root" ]; then
+  branch=$(git -C "$pane_path" symbolic-ref --quiet --short HEAD 2>/dev/null || git -C "$pane_path" rev-parse --short HEAD 2>/dev/null || true)
+  repo_name=${repo_root##*/}
+  git_dir=$(git -C "$pane_path" rev-parse --absolute-git-dir 2>/dev/null || true)
+  common_dir=$(git -C "$pane_path" rev-parse --path-format=absolute --git-common-dir 2>/dev/null || true)
+
+  if [ -n "$git_dir" ] && [ -n "$common_dir" ] && [ "$git_dir" != "$common_dir" ]; then
+    repo_name="wt:$repo_name"
+  fi
+
+  if [ -n "$branch" ]; then
+    printf '%s git:%s\n' "$repo_name" "$branch"
+  else
+    printf '%s\n' "$repo_name"
+  fi
+else
+  case "$pane_path" in
+    "$HOME"/*) printf '~/%s\n' "${pane_path#"$HOME"/}" ;;
+    "$HOME") printf '~\n' ;;
+    *) printf '%s\n' "$pane_path" ;;
+  esac
+fi

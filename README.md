@@ -27,5 +27,5 @@ The installer copies files into place and backs up any existing targets under `~
 
 - `.zshrc` with portable git aliases, fzf defaults, `nvim` editor defaults, and terminal navigation keys
 - `.gitconfig` with `delta` settings and git aliases
-- `.tmux.conf` plus `~/.config/tmux/aesthetic.conf`
+- `.tmux.conf` plus the purple/blue tmux theme, heavy pane borders, pane labels, powerline arrows, and repo/branch status context
 - `.config/nvim/init.lua` and `lazy-lock.json`
