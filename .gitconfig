@@ -24,7 +24,7 @@
 	ds = diff --staged
 	a = add
 	cm = commit -m
-	pl = pull --rebase
+	pl = pull
 	p = push
 	co = checkout
 	sw = switch

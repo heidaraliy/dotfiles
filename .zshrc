@@ -42,7 +42,7 @@ alias gd='git diff'
 alias gds='git diff --staged'
 alias ga='git add'
 alias gc='git commit -m'
-alias gpl='git pull --rebase'
+alias gpl='git pull'
 alias gp='git push'
 
 _gac() {
