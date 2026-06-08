@@ -1,0 +1,33 @@
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	line-numbers = true
+	side-by-side = true
+	syntax-theme = Dracula
+	features = decorations
+
+[delta "decorations"]
+	commit-decoration-style = bold yellow box
+	file-style = bold yellow
+	file-decoration-style = none
+	hunk-header-decoration-style = cyan box
+
+[alias]
+	st = status
+	lg = log --oneline --decorate -n 20
+	d = diff
+	ds = diff --staged
+	a = add
+	cm = commit -m
+	pl = pull --rebase
+	p = push
+	co = checkout
+	sw = switch
+	br = branch
+	last = log -1 HEAD --stat
+	unstage = reset HEAD --
